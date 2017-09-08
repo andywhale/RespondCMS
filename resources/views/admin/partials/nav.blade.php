@@ -13,7 +13,7 @@
         <a class="nav-link" href="\admin\content">Content</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="\admin\taxonomy">Taxonomy</a>
+        <a class="nav-link" href="\admin\tags">Tags</a>
       </li>
     </ul>
 

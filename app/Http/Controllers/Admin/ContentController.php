@@ -17,8 +17,8 @@ class ContentController extends Controller
       return view('admin.content.index', compact('contents'));
     }
 
-    public function show(Content $content) {
-      return view('admin.content.show', compact('content'));
+    public function edit(Content $content) {
+      return view('admin.content.edit', compact('content'));
     }
 
     public function create() {
@@ -30,11 +30,24 @@ class ContentController extends Controller
         'title' => 'required|min:3', 
         'body' => 'required|min:3'
       ]);
-      Content::create([
-        'title' => request('title'),
-        'body' => request('body'),
-        'user_id' => auth()->id(),
-      ]);
+      auth()->user()->publishContent(new Content(request(['title', 'body'])));
       return redirect('/admin/content');
+    }
+
+    public function update(Content $content) {
+      $this->validate(request(), [
+        'title' => 'required|min:3', 
+        'body' => 'required|min:3'
+      ]);
+      $content->title = request('title');
+      $content->body = request('body');
+      $content->save();
+      return redirect('/admin/content');
+    }
+
+    public function destroy(Content $content)
+    {
+        $content->delete();
+        return redirect('/admin/content');
     }
 }

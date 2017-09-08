@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
       <label for="pageBody">Page body</label>
-      <textarea name="body" class="form-control" id="pageBody" rows="3" required></textarea>
+      <textarea name="body" class="form-control" id="pageBody" rows="10" required></textarea>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>

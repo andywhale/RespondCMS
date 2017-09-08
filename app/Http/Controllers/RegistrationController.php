@@ -18,10 +18,10 @@ class RegistrationController extends Controller
           'password' => 'required|min:8|confirmed'
       ]);
 
-      $user = User::create(request(['name','email','password']));
+      $user = User::Create(request(['name','email','password']));
 
       auth()->login($user);
 
-      return redirect('\admin');
+      return redirect('/admin');
     }
 }

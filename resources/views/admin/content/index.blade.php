@@ -22,7 +22,7 @@
           <td>{{ $content->user->name }}</td>
           <td>{{ $content->created_at->diffForHumans() }}</td>
           <td>{{ $content->updated_at->diffForHumans() }}</td>
-          <td><a href="/admin/content/{{ $content->id }}" class="btn btn-outline-secondary btn-sm" role="button">Edit</a></td>
+          <td><a href="/admin/content/{{ $content->id }}/edit" class="btn btn-outline-secondary btn-sm" role="button">Edit</a></td>
         </tr>
         @endforeach
       </tbody>
