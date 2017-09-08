@@ -25,3 +25,4 @@ Route::get('/admin/tags', 'Admin\TagController@index');
 Route::get('/admin/tags/create', 'Admin\TagController@create');
 Route::post('/admin/tags', 'Admin\TagController@store');
 Route::get('/admin/tags/{tag}', 'Admin\TagController@show');
+Route::get('/admin/tags/{tag}/delete', 'Admin\TagController@destroy');

@@ -33,4 +33,9 @@ class TagController extends Controller
       $tag->save();
       return redirect('/admin/tags');
     }
+
+    public function destroy(Tag $tag) {
+      $tag->delete();
+      return redirect('/admin/tags');
+    }
 }
