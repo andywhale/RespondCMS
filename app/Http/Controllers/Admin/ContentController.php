@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Content;
+use App\Tag;
 use App\Http\Requests\ContentFormRequest;
 
 class ContentController extends Controller
@@ -19,11 +20,13 @@ class ContentController extends Controller
     }
 
     public function edit(Content $content) {
-      return view('admin.content.edit', compact('content'));
+      $tags = Tag::all();
+      return view('admin.content.edit', compact('content', 'tags'));
     }
 
     public function create() {
-      return view('admin.content.create');
+      $tags = Tag::all();
+      return view('admin.content.create', compact('tags'));
     }
 
     public function store(ContentFormRequest $request) {

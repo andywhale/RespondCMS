@@ -3,7 +3,7 @@
 @section('content')
   <h1>Create a Tag</h1>
 
-  <form method="POST" action="/admin/tag">
+  <form method="POST" action="/admin/tags">
     {{ csrf_field() }}
 
     @include('admin.partials.errors')

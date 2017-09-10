@@ -17,6 +17,21 @@
       <textarea name="body" class="form-control" id="pageBody" rows="10" required>{{ $content->body }}</textarea>
     </div>
     <div class="form-group">
+      <label>Page tags</label>
+      @foreach ($tags as $tag)
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="tags" 
+          @if ($content->tags()->where('id', $tag->id)->exists())
+            checked="checked"
+          @endif
+          value="{{ $tag->id }}">
+          {{ $tag->name }}
+        </label>
+      </div>
+      @endforeach
+    </div>
+    <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
       <a class="btn btn-danger float-right" role="button" href="/admin/content/{{ $content->id }}/delete">Delete</a>
     </div>

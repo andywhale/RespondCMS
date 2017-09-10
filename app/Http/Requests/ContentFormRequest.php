@@ -41,5 +41,6 @@ class ContentFormRequest extends FormRequest
         $content->title = request('title');
         $content->body = request('body');
         $content->save();
+        $content->tags()->attach(request(['tags']));
     }
 }

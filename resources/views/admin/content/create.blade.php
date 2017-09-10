@@ -17,6 +17,17 @@
       <textarea name="body" class="form-control" id="pageBody" rows="10" required></textarea>
     </div>
     <div class="form-group">
+      <label>Page tags</label>
+      @foreach ($tags as $tag)
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="tags" value="{{ $tag->id }}">
+          {{ $tag->name }}
+        </label>
+      </div>
+      @endforeach
+    </div>
+    <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
