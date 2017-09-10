@@ -30,6 +30,9 @@ class ContentFormRequest extends FormRequest
         ];
     }
 
+    /**
+     * Persist the content item to the database.
+     */
     public function persist(Content $content = null) {
         if (!$content) {
             $content = new Content();
