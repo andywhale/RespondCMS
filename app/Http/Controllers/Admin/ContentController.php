@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Content;
+use App\Http\Requests\ContentFormRequest;
 
 class ContentController extends Controller
 {
@@ -25,23 +26,13 @@ class ContentController extends Controller
       return view('admin.content.create');
     }
 
-    public function store() {
-      $this->validate(request(), [
-        'title' => 'required|min:3', 
-        'body' => 'required|min:3'
-      ]);
-      auth()->user()->publishContent(new Content(request(['title', 'body'])));
+    public function store(ContentFormRequest $request) {
+      $request->persist();
       return redirect('/admin/content');
     }
 
-    public function update(Content $content) {
-      $this->validate(request(), [
-        'title' => 'required|min:3', 
-        'body' => 'required|min:3'
-      ]);
-      $content->title = request('title');
-      $content->body = request('body');
-      $content->save();
+    public function update(ContentFormRequest $request, Content $content) {
+      $request->persist($content);
       return redirect('/admin/content');
     }
 
