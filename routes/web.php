@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ContentController@index');
+Route::get('/{content}', 'ContentController@index');
+Route::get('/tagged/{tag}', 'TagController@index');
 
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/login', 'SessionController@store');
