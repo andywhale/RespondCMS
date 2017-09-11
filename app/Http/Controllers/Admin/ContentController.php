@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Content;
 use App\Tag;
-use App\Http\Requests\ContentFormRequest;
+use App\Http\Requests\ContentForm;
 
 class ContentController extends Controller
 {
@@ -29,13 +29,13 @@ class ContentController extends Controller
       return view('admin.content.create', compact('tags'));
     }
 
-    public function store(ContentFormRequest $request) {
-      $request->persist();
+    public function store(ContentForm $form) {
+      $form->persist();
       return redirect('/admin/content');
     }
 
-    public function update(ContentFormRequest $request, Content $content) {
-      $request->persist($content);
+    public function update(ContentForm $form, Content $content) {
+      $form->persist($content);
       return redirect('/admin/content');
     }
 

@@ -21,7 +21,7 @@
       @foreach ($tags as $tag)
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="tags" 
+          <input class="form-check-input" type="checkbox" name="tags[]" 
           @if ($content->tags()->where('id', $tag->id)->exists())
             checked="checked"
           @endif

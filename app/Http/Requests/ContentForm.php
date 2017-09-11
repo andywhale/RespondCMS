@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Content;
 
-class ContentFormRequest extends FormRequest
+class ContentForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,9 +38,9 @@ class ContentFormRequest extends FormRequest
             $content = new Content();
             $content->user_id = auth()->user()->id;
         }
-        $content->title = request('title');
-        $content->body = request('body');
+        $content->title = $this->title;
+        $content->body = $this->body;
         $content->save();
-        $content->tags()->attach(request(['tags']));
+        $content->tags()->sync($this->tags);
     }
 }
