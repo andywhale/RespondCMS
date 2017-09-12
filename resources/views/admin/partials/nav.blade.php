@@ -6,13 +6,13 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="\admin">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item {{{ (Request::is('admin')) ? 'active' : '' }}}">
+        <a class="nav-link" href="\admin">Home</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item {{{ (Request::is('admin/content*')) ? 'active' : '' }}}">
         <a class="nav-link" href="\admin\content">Content</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {{{ (Request::is('admin/tags*')) ? 'active' : '' }}}">
         <a class="nav-link" href="\admin\tags">Tags</a>
       </li>
     </ul>
