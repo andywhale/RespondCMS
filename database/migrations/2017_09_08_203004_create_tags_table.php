@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreateTagsTable extends Migration
 {
@@ -18,6 +19,7 @@ class CreateTagsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug');
             $table->timestamps();
+            NestedSet::columns($table);
         });
 
         Schema::create('content_tag', function (Blueprint $table) {

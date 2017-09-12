@@ -22,7 +22,16 @@ class TagController extends Controller
     }
 
     public function create() {
-      return view('admin.tag.create');
+      $traverse = function ($tags, $prefix = '-') use (&$traverse) {
+          $options = [];
+          foreach ($tags as $tag) {
+              $options[$tag->id] = $prefix . ' ' . $tag->name;
+              $options = array_merge($options, $traverse($tag->children, $prefix . '-'));
+          }
+          return $options;
+      };
+
+      return view('admin.tag.create', ['tags' => $traverse(Tag::get()->toTree())]);
     }
 
     public function store() {

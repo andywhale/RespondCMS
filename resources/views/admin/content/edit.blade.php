@@ -3,7 +3,7 @@
 @section('content')
   <h1>Edit Page</h1>
 
-  <form method="POST" action="/admin/content/{{ $content->id }}">
+  <form method="POST" action="/admin/content/{{ $content->slug }}">
     {{ csrf_field() }}
 
     @include('admin.partials.errors')
@@ -33,7 +33,7 @@
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a class="btn btn-danger float-right" role="button" href="/admin/content/{{ $content->id }}/delete">Delete</a>
+      <a class="btn btn-danger float-right" role="button" href="/admin/content/{{ $content->slug }}/delete">Delete</a>
     </div>
   </form>
 @endsection

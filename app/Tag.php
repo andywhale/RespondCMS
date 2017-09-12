@@ -3,11 +3,24 @@
 namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Tag extends Model
 {
-    use Sluggable;
-    
+    use Sluggable, NodeTrait {
+        NodeTrait::replicate as replicateNode;
+        Sluggable::replicate as replicateSlug;
+    }
+
+    public function replicate(array $except = null)
+    {
+        $instance = $this->replicateNode($except);
+        (new SlugService())->slug($instance, true);
+
+        return $instance;
+    }
+
     public function contents() {
       return $this->belongsToMany(Content::class);
     }

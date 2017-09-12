@@ -13,6 +13,15 @@
       <input type="text" name="name" class="form-control" id="name" placeholder="Tag name" required>
     </div>
     <div class="form-group">
+      <label for="parent">Parent</label>
+      <select class="form-control" name="parent">
+        <option value="">Root</option>
+        @foreach ($tags as $tag_id => $tag)
+        <option value="{{ $tag_id }}">{{ $tag }}</option>
+        @endforeach
+      </select>
+    </div>
+    <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>

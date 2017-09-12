@@ -14,7 +14,7 @@
       <tbody>
         @foreach ($tags as $tag)
         <tr>
-          <td>{{ $tag->id }}</td>
+          <td>{{ $tag->slug }}</td>
           <td>{{ $tag->name }}</td>
           <td><a href="/admin/tags/{{ $tag->slug }}/delete" class="btn btn-outline-danger btn-sm" role="button">Delete</a></td>
         </tr>
