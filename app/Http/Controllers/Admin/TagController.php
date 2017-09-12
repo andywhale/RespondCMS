@@ -26,19 +26,21 @@ class TagController extends Controller
           $options = [];
           foreach ($tags as $tag) {
               $options[$tag->id] = $prefix . ' ' . $tag->name;
-              $options = array_merge($options, $traverse($tag->children, $prefix . '-'));
+              $options = $options + $traverse($tag->children, $prefix . '-');
           }
           return $options;
       };
 
-      return view('admin.tag.create', ['tags' => $traverse(Tag::get()->toTree())]);
+      $tags = $traverse(Tag::get()->toTree());
+
+      return view('admin.tag.create', compact('tags'));
     }
 
     public function store() {
       $this->validate(request(), [
         'name' => 'required|min:2'
       ]);
-      $tag = new Tag(request(['name']));
+      $tag = new Tag(request(['name', 'parent_id']));
       $tag->save();
       return redirect('/admin/tags');
     }

@@ -13,8 +13,8 @@
       <input type="text" name="name" class="form-control" id="name" placeholder="Tag name" required>
     </div>
     <div class="form-group">
-      <label for="parent">Parent</label>
-      <select class="form-control" name="parent">
+      <label for="parent_id">Parent</label>
+      <select class="form-control" name="parent_id">
         <option value="">Root</option>
         @foreach ($tags as $tag_id => $tag)
         <option value="{{ $tag_id }}">{{ $tag }}</option>
