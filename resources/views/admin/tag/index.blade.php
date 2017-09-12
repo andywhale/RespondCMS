@@ -16,7 +16,7 @@
         <tr>
           <td>{{ $tag->id }}</td>
           <td>{{ $tag->name }}</td>
-          <td><a href="/admin/tags/{{ $tag->id }}/delete" class="btn btn-outline-danger btn-sm" role="button">Delete</a></td>
+          <td><a href="/admin/tags/{{ $tag->slug }}/delete" class="btn btn-outline-danger btn-sm" role="button">Delete</a></td>
         </tr>
         @endforeach
       </tbody>

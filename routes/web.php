@@ -1,7 +1,7 @@
 <?php
 
-Route::get('/', 'ContentController@index');
-Route::get('/content/{content}', 'ContentController@index');
+Route::get('/json', 'ContentController@index');
+Route::get('/json/{content}', 'ContentController@index');
 Route::get('/tagged/{tag}', 'TagController@index');
 
 Route::get('/login', 'SessionController@create')->name('login');
