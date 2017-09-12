@@ -10,9 +10,7 @@ Route::get('/logout', 'SessionController@destroy');
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('/admin', 'Admin\DashboardController@index');
 
 Route::get('/admin/content', 'Admin\ContentController@index');
 Route::get('/admin/content/create', 'Admin\ContentController@create');
