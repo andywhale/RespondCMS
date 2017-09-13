@@ -13,13 +13,16 @@
         <a class="nav-link" href="\admin\tags">Tags</a>
       </li>
     </ul>
-
-    @if (auth()->check())
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="\user">{{ auth()->user()->name }}</a>
-      </li>
-    </ul>
-    @endif
   </div>
+
+  @if (auth()->check())
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ auth()->user()->name }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="\logout">Logout</a>
+      </div>
+    </div>
+  @endif
 </nav>
