@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tree\TagTree;
 use App\Tag;
 
 class TagController extends Controller
@@ -13,7 +14,7 @@ class TagController extends Controller
     }
 
     public function index() {
-      $tags = Tag::all();
+      $tags = Tag::withDepth()->defaultOrder()->get();
       return view('admin.tag.index', compact('tags'));
     }
 
@@ -22,17 +23,7 @@ class TagController extends Controller
     }
 
     public function create() {
-      $traverse = function ($tags, $prefix = '-') use (&$traverse) {
-          $options = [];
-          foreach ($tags as $tag) {
-              $options[$tag->id] = $prefix . ' ' . $tag->name;
-              $options = $options + $traverse($tag->children, $prefix . '-');
-          }
-          return $options;
-      };
-
-      $tags = $traverse(Tag::get()->toTree());
-
+      $tags = TagTree::build();
       return view('admin.tag.create', compact('tags'));
     }
 

@@ -18,11 +18,11 @@
     </div>
     <div class="form-group">
       <label>Page tags</label>
-      @foreach ($tags as $tag)
+      @foreach ($tags as $tag_id => $tag)
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}">
-          {{ $tag->name }}
+          <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag_id }}">
+          {{ $tag }}
         </label>
       </div>
       @endforeach

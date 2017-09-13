@@ -18,15 +18,15 @@
     </div>
     <div class="form-group">
       <label>Page tags</label>
-      @foreach ($tags as $tag)
+      @foreach ($tags as $tag_id => $tag)
       <div class="form-check">
         <label class="form-check-label">
           <input class="form-check-input" type="checkbox" name="tags[]" 
-          @if ($content->tags()->where('id', $tag->id)->exists())
+          @if ($content->tags()->where('id', $tag_id)->exists())
             checked="checked"
           @endif
-          value="{{ $tag->id }}">
-          {{ $tag->name }}
+          value="{{ $tag_id }}">
+          {{ $tag }}
         </label>
       </div>
       @endforeach

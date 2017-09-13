@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContentForm;
+use App\Tree\TagTree;
 use App\Content;
 use App\Tag;
-use App\Http\Requests\ContentForm;
 
 class ContentController extends Controller
 {
@@ -20,12 +21,12 @@ class ContentController extends Controller
     }
 
     public function edit(Content $content) {
-      $tags = Tag::all();
+      $tags = TagTree::build();
       return view('admin.content.edit', compact('content', 'tags'));
     }
 
     public function create() {
-      $tags = Tag::all();
+      $tags = TagTree::build();
       return view('admin.content.create', compact('tags'));
     }
 

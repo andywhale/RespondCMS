@@ -15,7 +15,7 @@
     <div class="form-group">
       <label for="parent_id">Parent</label>
       <select class="form-control" name="parent_id">
-        <option value="">Root</option>
+        <option value="0">- No parent -</option>
         @foreach ($tags as $tag_id => $tag)
         <option value="{{ $tag_id }}">{{ $tag }}</option>
         @endforeach

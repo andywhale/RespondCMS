@@ -14,7 +14,7 @@
       <tbody>
         @foreach ($tags as $tag)
         <tr>
-          <td>{{ $tag->slug }}</td>
+          <td>@for ($i = 0; $i < $tag->depth; $i++) - @endfor {{ $tag->slug }}</td>
           <td>{{ $tag->name }}</td>
           <td><a href="/admin/tags/{{ $tag->slug }}/delete" class="btn btn-outline-danger btn-sm" role="button">Delete</a></td>
         </tr>
