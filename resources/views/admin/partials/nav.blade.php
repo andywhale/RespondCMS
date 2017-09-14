@@ -17,7 +17,7 @@
 
   @if (auth()->check())
     <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ auth()->user()->name }}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

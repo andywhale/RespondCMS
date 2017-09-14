@@ -16,6 +16,14 @@ class Content extends Model
       return $this->belongsToMany(Tag::class);
     }
 
+    public function contentBlocks() {
+        return $this->hasMany(ContentBlock::class);
+    }
+
+    public function publishContentBlock(ContentBlock $block) {
+        $this->contentBlocks()->save($block);
+    }
+
     /**
      * Return the sluggable configuration array for this model.
      *

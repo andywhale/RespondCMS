@@ -3,7 +3,7 @@
 @section('content')
   <h1>Create a Page</h1>
 
-  <form method="POST" action="/admin/content">
+  <form method="POST" action="/admin/content" id="contentForm">
     {{ csrf_field() }}
 
     @include('admin.partials.errors')
@@ -27,6 +27,9 @@
       </div>
       @endforeach
     </div>
+
+    @include('admin.content.partials.repeatableblock')
+
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>

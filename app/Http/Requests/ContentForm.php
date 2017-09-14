@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Content;
+use App\ContentBlock;
 
 class ContentForm extends FormRequest
 {
@@ -41,6 +42,14 @@ class ContentForm extends FormRequest
         $content->title = $this->title;
         $content->body = $this->body;
         $content->save();
+        foreach ($this->block as $block) {
+            if (isset($block['id'])) {
+                $contentBlock = ContentBlock::find($block['id']);
+                $contentBlock->fill($block)->save();
+            } else {
+                $content->publishContentBlock(new ContentBlock($block));
+            }
+        }
         $content->tags()->sync($this->tags);
     }
 }
